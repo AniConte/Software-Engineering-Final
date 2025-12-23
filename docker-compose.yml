@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: task1-mysql
+    environment:
+      MYSQL_DATABASE: task1
+      MYSQL_USER: sw_eng_user
+      MYSQL_PASSWORD: DBlCn1505XNJmtcvplUjD9AgiMomVqmt
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    command: ["--default-authentication-plugin=mysql_native_password"]
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: unless-stopped
+
+  app:
+    image: task1-app
+    container_name: task1-app
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/task1?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: sw_eng_user
+      SPRING_DATASOURCE_PASSWORD: DBlCn1505XNJmtcvplUjD9AgiMomVqmt
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_OPEN-IN-VIEW: "false"
+
+volumes:
+  db_data:
