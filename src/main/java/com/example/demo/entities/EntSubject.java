@@ -1,9 +1,13 @@
 package com.example.demo.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,4 +24,7 @@ public class EntSubject {
     private Long id;
 
     private String name;
+
+    @ManyToMany(mappedBy = "subjects")
+    private Set<User> users = new HashSet<>();
 }
