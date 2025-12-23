@@ -28,7 +28,7 @@ public class EntResultController {
         return service.getAll();
     }
 
-    @GetMapping("/{id")
+    @GetMapping("/{id}")
     public EntResultDTO getById(@PathVariable Long id) {
         return service.getById(id);
     }
