@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/task1
+      ?createDatabaseIfNotExist=true
+      &allowPublicKeyRetrieval=true
+      &useSSL=false
+      &serverTimezone=UTC
+    username: sw_eng_user
+    password: DBlCn1505XNJmtcvplUjD9AgiMomVqmt
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        "[format_sql]": true
+server:
+  port: 8080
