@@ -10,7 +10,7 @@ services:
       MYSQL_PASSWORD: DBlCn1505XNJmtcvplUjD9AgiMomVqmt
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - "3306:3306"
+      - "3307:3306"
     command: ["--default-authentication-plugin=mysql_native_password"]
     volumes:
       - db_data:/var/lib/mysql
