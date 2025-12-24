@@ -26,26 +26,31 @@ public class EntResultController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ENT_RESULT_READ')")
     public List<EntResultDTO> getAll() {
         return service.getAll();
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ENT_RESULT_READ')")
     public EntResultDTO getById(@PathVariable Long id) {
         return service.getById(id);
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ENT_RESULT_WRITE')")
     public EntResultDTO create(@RequestBody EntResultDTO dto) {
         return service.create(dto);
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('ENT_RESULT_WRITE')")
     public EntResultDTO update(@PathVariable Long id, @RequestBody EntResultDTO dto) {
         return service.update(id, dto);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ENT_RESULT_WRITE')")
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }

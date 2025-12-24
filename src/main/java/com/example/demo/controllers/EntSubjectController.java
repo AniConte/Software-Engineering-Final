@@ -26,26 +26,31 @@ public class EntSubjectController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('ENT_SUBJECT_READ')")
     public List<EntSubjectDTO> getAll() {
         return service.getAll();
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ENT_SUBJECT_READ')")
     public EntSubjectDTO getById(@PathVariable Long id) {
         return service.getById(id);
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ENT_SUBJECT_WRITE')")
     public EntSubjectDTO create(@RequestBody EntSubjectDTO dto) {
         return service.create(dto);
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('ENT_SUBJECT_WRITE')")
     public EntSubjectDTO update(@PathVariable Long id, @RequestBody EntSubjectDTO dto) {
         return service.update(id, dto);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ENT_SUBJECT_WRITE')")
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }

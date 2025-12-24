@@ -20,5 +20,6 @@ public interface UserMapper {
     @Mapping(target = "sex", ignore = true)
     @Mapping(target = "subjects", ignore = true)
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "permissions", ignore = true)
     User toUserEntity(UserDTO dto);
 }

@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -48,5 +49,35 @@ public class UserController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         userService.delete(id);
+    }
+
+    @GetMapping("/{id}/permissions")
+    public List<String> getUserPermissions(@PathVariable Long id) {
+        return userService.getPermissions(id);
+    }
+
+    @GetMapping("/me/permissions")
+    public List<String> getMyPermissions(Principal principal) {
+        return userService.getPermissionsByUsername(principal.getName());
+    }
+
+    @GetMapping("/permissions")
+    public List<String> getAllPermissions() {
+        return userService.getAllPermissionNames();
+    }
+
+    @PostMapping("/{id}/permissions")
+    public List<String> grantPermissions(@PathVariable Long id, @RequestBody List<String> permissionNames) {
+        return userService.grantPermissions(id, permissionNames);
+    }
+
+    @PutMapping("/{id}/permissions")
+    public List<String> setPermissions(@PathVariable Long id, @RequestBody List<String> permissionNames) {
+        return userService.setPermissions(id, permissionNames);
+    }
+
+    @DeleteMapping("/{id}/permissions")
+    public List<String> revokePermissions(@PathVariable Long id, @RequestBody List<String> permissionNames) {
+        return userService.revokePermissions(id, permissionNames);
     }
 }

@@ -39,8 +39,4 @@ public class EntResult {
     @ManyToOne
     @JoinColumn(name = "subject_id")
     private EntSubject subject;
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_permissions", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "permission_id"))
-    private Set<AppPermission> permissions = new HashSet<>();
 }

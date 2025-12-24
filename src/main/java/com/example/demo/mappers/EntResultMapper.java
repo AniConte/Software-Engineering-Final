@@ -17,6 +17,6 @@ public interface EntResultMapper {
 
     @Mapping(target = "user", ignore = true)
     @Mapping(target = "subject", ignore = true)
-    @Mapping(target = "date", ignore = true)
+    @Mapping(source = "examDate", target = "date")
     EntResult toEntity(EntResultDTO dto);
 }
